@@ -4,8 +4,8 @@ plugins {
     kotlin("jvm") version "1.5.0"
 }
 
-group = "com.github"
-version = "0.1-SNAPSHOT"
+group = "io.github.ys-kalyakin"
+version = "0.1"
 
 repositories {
     mavenCentral()

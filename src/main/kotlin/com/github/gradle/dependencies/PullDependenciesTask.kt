@@ -88,11 +88,11 @@ abstract class PullDependenciesTask : DefaultTask() {
         ).map { (component, artifacts) ->
             toResolvedComponents(result.first, component, artifacts) to artifacts
         }
-            .forEach {
-                it.first.forEach { r ->
-                    processArtifactResult(r, it.second)
-                }
+        .forEach {
+            it.first.forEach { r ->
+                processArtifactResult(r, it.second)
             }
+        }
     }
 
     private fun toResolvedComponents(
