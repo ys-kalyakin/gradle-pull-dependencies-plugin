@@ -8,10 +8,13 @@ plugins {
     `signing`
     kotlin("jvm") version "1.5.0"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    id("com.gradle.plugin-publish") version "0.16.0"
 }
 
+val currentVersion = "0.2"
+
 group = "io.github.ys-kalyakin"
-version = "0.1"
+version = "$currentVersion"
 
 repositories {
     mavenCentral()
@@ -25,8 +28,8 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        create("gradle-pull-dependencies-plugin") {
-            id = "gradle-pull-dependencies-plugin"
+        create("io.github.ys-kalyakin.gradle-pull-dependencies-plugin") {
+            id = "io.github.ys-kalyakin.gradle-pull-dependencies-plugin"
             implementationClass = "com.github.gradle.dependencies.PullDependenciesPlugin"
         }
     }
@@ -110,5 +113,26 @@ nexusPublishing {
             username.set(extra["ossrhUserName"].toString())
             password.set(extra["ossrhPassword"].toString())
         }
+    }
+}
+
+pluginBundle {
+    website = "https://github.com/ys-kalyakin/gradle-pull-dependencies-plugin"
+    vcsUrl = "https://github.com/ys-kalyakin/gradle-pull-dependencies-plugin"
+    description = "Gradle Plugin for pulling dependencies from remote repositories"
+
+    (plugins) {
+        "io.github.ys-kalyakin.gradle-pull-dependencies-plugin" {
+            displayName = "Gradle pull dependencies plugin"
+            tags = listOf("individual", "tags", "per", "plugin")
+            version = "$currentVersion"
+        }
+
+    }
+
+    mavenCoordinates {
+        groupId = "io.github.ys-kalyakin"
+        artifactId = "gradle-pull-dependencies-plugin"
+        version = "$currentVersion"
     }
 }

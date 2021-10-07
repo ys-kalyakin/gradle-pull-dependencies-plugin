@@ -4,7 +4,7 @@ Plugin adds the task ```pullDependencies``` that pulls dependencies into a local
 # Usage 
 build.gradle
 ```groovy
-apply plugin: 'gradle-pull-dependencies-plugin'
+apply plugin: 'io.github.ys-kalyakin.gradle-pull-dependencies-plugin'
 
 pullDependencies {
   localRepositoryPath = Paths.get(rootDir.absolutePath, 'libs', 'repository').toFile()
