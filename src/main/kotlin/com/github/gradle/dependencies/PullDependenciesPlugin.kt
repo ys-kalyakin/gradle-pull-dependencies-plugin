@@ -3,7 +3,7 @@ package com.github.gradle.dependencies
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import java.io.File
-import java.nio.file.Path
+import java.nio.file.Paths
 import java.util.*
 
 /**
@@ -31,6 +31,6 @@ class PullDependenciesPlugin : Plugin<Project> {
         return Optional.ofNullable(project.extensions.getByName(TASK_NAME))
             .map { it as PullDependenciesExtension}
             .map { it.localRepositoryPath }
-            .orElse(Path.of(project.projectDir.absolutePath, "libs", "repository").toFile())
+            .orElse(Paths.get(project.projectDir.absolutePath, "libs", "repository").toFile())
     }
 }

@@ -27,7 +27,7 @@ import org.w3c.dom.Element
 import java.io.File
 import java.io.File.pathSeparator
 import java.nio.file.Files
-import java.nio.file.Path
+import java.nio.file.Paths
 import java.nio.file.StandardCopyOption.REPLACE_EXISTING
 import javax.xml.XMLConstants
 import javax.xml.parsers.DocumentBuilderFactory
@@ -210,12 +210,12 @@ abstract class PullDependenciesTask : DefaultTask() {
 
     private fun saveFile(identifier: ModuleComponentIdentifier, file: File) {
         val path = identifier.group.split(".") + identifier.module + identifier.version
-        val repositoryPath = Path.of(
+        val repositoryPath = Paths.get(
             localRepositoryPath.get().asFile.absolutePath,
             path.joinToString(separator = pathSeparator)
         )
         repositoryPath.toFile().mkdirs()
-        val destinationPath = Path.of(repositoryPath.toAbsolutePath().toString(), file.name)
+        val destinationPath = Paths.get(repositoryPath.toAbsolutePath().toString(), file.name)
 
         logger.info("Saving file ${file.name} to $destinationPath")
         if (!Files.exists(destinationPath)) {

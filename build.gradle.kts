@@ -11,7 +11,7 @@ plugins {
     id("com.gradle.plugin-publish") version "0.16.0"
 }
 
-val currentVersion = "0.2"
+val currentVersion = "0.3"
 
 group = "io.github.ys-kalyakin"
 version = "$currentVersion"
